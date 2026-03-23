@@ -1,0 +1,16 @@
+LICENSE
+README.md
+pyproject.toml
+src/bioreads/__init__.py
+src/bioreads/cli.py
+src/bioreads.egg-info/PKG-INFO
+src/bioreads.egg-info/SOURCES.txt
+src/bioreads.egg-info/dependency_links.txt
+src/bioreads.egg-info/entry_points.txt
+src/bioreads.egg-info/requires.txt
+src/bioreads.egg-info/top_level.txt
+src/bioreads/core/__init__.py
+src/bioreads/core/aligner.py
+src/bioreads/core/detector.py
+src/bioreads/core/qc.py
+src/bioreads/gui/__init__.py

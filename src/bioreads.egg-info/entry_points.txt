@@ -1,0 +1,2 @@
+[console_scripts]
+bioreads = bioreads.cli:cli

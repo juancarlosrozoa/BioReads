@@ -1,0 +1,82 @@
+Metadata-Version: 2.4
+Name: bioreads
+Version: 0.1.0
+Summary: NGS quality control and alignment for multiple sequencing platforms
+License: MIT License
+        
+        Copyright (c) 2026 Juan Carlos Rozoa
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+        
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: biopython>=1.81
+Requires-Dist: click>=8.0
+Requires-Dist: customtkinter>=5.2
+Requires-Dist: tkinterdnd2>=0.3
+Provides-Extra: align
+Requires-Dist: mappy>=2.24; sys_platform != "win32" and extra == "align"
+Requires-Dist: pysam>=0.22; sys_platform != "win32" and extra == "align"
+Provides-Extra: dev
+Requires-Dist: pytest>=7.0; extra == "dev"
+Dynamic: license-file
+
+# BioReads
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.10%2B-blue)](https://www.python.org/)
+[![Platforms](https://img.shields.io/badge/Platforms-Illumina%20|%20Nanopore%20|%20PacBio%20|%20IonTorrent-green)](#supported-platforms)
+
+**BioReads** is an open-source Python tool for NGS quality control and alignment across multiple sequencing platforms.
+
+It automatically detects the sequencing platform from your data, selects the appropriate aligner, and generates a detailed QC report — without requiring you to learn a different tool for each platform.
+
+### Supported platforms
+
+| Platform | Type | Aligner |
+|---|---|---|
+| Illumina (HiSeq, NovaSeq, MiSeq) | Short reads | BWA-MEM2 / STAR |
+| Oxford Nanopore (ONT) | Long reads | minimap2 / mappy |
+| PacBio HiFi (CCS) | Long reads | minimap2 / mappy |
+| Ion Torrent | Short reads | BWA-MEM2 |
+| BGI / DNBSEQ | Short reads | BWA-MEM2 |
+
+### Two operation levels
+
+| Level | Requirements | Capabilities |
+|---|---|---|
+| **Level 1** — pip only | `mappy`, `biopython` | FASTQ QC, lightweight alignment via mappy |
+| **Level 2** — bioconda / WSL2 | BWA-MEM2, STAR, minimap2 | Full alignment, splice-aware RNA-seq, BAM output |
+
+BioReads detects which level is available and works with what it finds.
+
+### Three interfaces
+
+```bash
+# GUI
+bioreads gui
+
+# CLI
+bioreads qc reads.fastq
+bioreads align --platform illumina --experiment rna reads_R1.fastq reads_R2.fastq --ref genome.fa
+
+# Python library
+from bioreads import QCEngine, AlignmentEngine
+```

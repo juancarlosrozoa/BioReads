@@ -1,0 +1,13 @@
+biopython>=1.81
+click>=8.0
+customtkinter>=5.2
+tkinterdnd2>=0.3
+
+[align]
+
+[align:sys_platform != "win32"]
+mappy>=2.24
+pysam>=0.22
+
+[dev]
+pytest>=7.0
