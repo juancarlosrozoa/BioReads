@@ -4,9 +4,7 @@
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue)](https://www.python.org/)
 [![Platforms](https://img.shields.io/badge/Platforms-Illumina%20|%20Nanopore%20|%20PacBio%20|%20IonTorrent%20|%20BGI-green)](#supported-platforms)
 
-**BioReads** is an open-source Python tool for NGS quality control and alignment across multiple sequencing platforms. It auto-detects your sequencing platform from FASTQ read headers, computes quality metrics, and selects the optimal aligner for your data — all from a single, consistent interface.
-
-No need to learn a different tool for each platform. One installation, every platform.
+NGS quality control and alignment for Illumina, Nanopore, PacBio, Ion Torrent, and BGI. Auto-detects your platform, computes read quality metrics, and selects the right aligner automatically.
 
 ---
 
